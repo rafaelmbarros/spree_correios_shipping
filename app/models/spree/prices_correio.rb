@@ -15,8 +15,8 @@ module Spree
       services = Spree::CorreiosShipping::Config[:services].split(',')
       services.map! { |s| s.strip.to_sym }
       count = 0
-      frete = Correios::Frete::Calculador.new :cep_origem => Spree::CorreiosShipping::Config[:origin_zip_code],
-                                              :cep_destino => zipcode,
+      frete = Correios::Frete::Calculador.new :cep_origem => Spree::CorreiosShipping::Config[:origin_zip_code].strip,
+                                              :cep_destino => zipcode.strip,
                                               :peso => weight,
                                               :comprimento => 30,
                                               :largura => 15,
